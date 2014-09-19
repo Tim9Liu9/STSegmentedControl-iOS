@@ -14,25 +14,34 @@
 @synthesize segment, standardSegment; 
 
 - (void)viewDidLoad {
+    
+ 
     [super viewDidLoad];
-	
+    
+
 	NSArray *objects = [NSArray arrayWithObjects:@"Featured", [UIImage imageNamed:@"SomeIcon.png"], @"Top Charts", @"Categories", nil];
 	
 	/*
 	 STSegmentedControl
 	 */
 	segment = [[STSegmentedControl alloc] initWithItems:objects];
-	segment.frame = CGRectMake(10, 10, 300, 40);
+	segment.frame = CGRectMake(10, 30, 300, 40);
+    // 监听分段选择器值改变
 	[segment addTarget:self action:@selector(valueChanged:) forControlEvents:UIControlEventValueChanged];
 	segment.selectedSegmentIndex = 1;
 	segment.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	[self.view addSubview:segment];
     
+    // 设置节选器里面第3个的文字颜色
+    [segment setTitleColor:[UIColor redColor] forSegmentAtIndex:2];
+    [segment setTitleColor:[UIColor blackColor] forSegmentAtIndex:0];
+    [segment setTitleColor:[UIColor blueColor] forSegmentAtIndex:3];
+    
 	/*
 	 UIKit UISegmentedControl
 	 */
 	standardSegment = [[UISegmentedControl alloc] initWithItems:objects];
-	standardSegment.frame = CGRectMake(10, 50, 300, 30);
+	standardSegment.frame = CGRectMake(10, 80, 300, 30);
 	standardSegment.segmentedControlStyle = UISegmentedControlStyleBar;
 	[standardSegment addTarget:self action:@selector(standardSegmentValueChanged:) forControlEvents:UIControlEventValueChanged];
 	standardSegment.selectedSegmentIndex = 1;
@@ -43,13 +52,13 @@
 	 Buttons
 	 */
 	UIButton *button1 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	button1.frame = CGRectMake(10, 100, 145, 30);
+	button1.frame = CGRectMake(10, 130, 145, 30);
 	[button1 setTitle:@"Remove button" forState:UIControlStateNormal];
 	[button1 addTarget:self action:@selector(button1Clicked:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:button1];
     
 	UIButton *button2 = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	button2.frame = CGRectMake(165, 100, 145, 30);
+	button2.frame = CGRectMake(165, 130, 145, 30);
 	[button2 setTitle:@"Change button 2" forState:UIControlStateNormal];
 	[button2 addTarget:self action:@selector(button2Clicked:) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:button2];

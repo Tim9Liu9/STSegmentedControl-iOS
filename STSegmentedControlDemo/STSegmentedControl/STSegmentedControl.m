@@ -40,7 +40,7 @@
 		self.selectedImageRight = [UIImage imageNamed:kSTSegmentRightSelectedBtn];
         
         self.buttonFont = kSTSegmentBtnFont;
-        self.buttonTextColor = kSTSegmentBtnTextColor;
+//        self.buttonTextColor = kSTSegmentBtnTextColor;
         self.selectedButtonTextColor = kSTSegmentSelectedBtnTextColor;
         self.buttonShadowColor = kSTSegmentBtnShadowColor;
         self.selectedButtonShadowColor = kSTSegmentSelectedBtnShadowColor;
@@ -67,7 +67,7 @@
 		self.selectedImageRight = [UIImage imageNamed:kSTSegmentRightSelectedBtn];
         
         self.buttonFont = kSTSegmentBtnFont;
-        self.buttonTextColor = kSTSegmentBtnTextColor;
+//        self.buttonTextColor = kSTSegmentBtnTextColor;
         self.selectedButtonTextColor = kSTSegmentSelectedBtnTextColor;
         self.buttonShadowColor = kSTSegmentBtnShadowColor;
         self.selectedButtonShadowColor = kSTSegmentSelectedBtnShadowColor;
@@ -103,7 +103,7 @@
 		self.selectedImageRight = [UIImage imageNamed:kSTSegmentRightSelectedBtn];
         
         self.buttonFont = kSTSegmentBtnFont;
-        self.buttonTextColor = kSTSegmentBtnTextColor;
+//        self.buttonTextColor = kSTSegmentBtnTextColor;
         self.selectedButtonTextColor = kSTSegmentSelectedBtnTextColor;
         self.buttonShadowColor = kSTSegmentBtnShadowColor;
         self.selectedButtonShadowColor = kSTSegmentSelectedBtnShadowColor;
@@ -164,7 +164,7 @@
                 }
 				else {
 					[button setBackgroundImage:[self.normalImageLeft stretchableImageWithLeftCapWidth:kSTSegmentLeftBtnLeftCap topCapHeight:kSTSegmentLeftBtnTopCap] forState:UIControlStateNormal];
-                    button.titleLabel.textColor = self.buttonTextColor;
+//                    button.titleLabel.textColor = self.buttonTextColor;
                     button.titleLabel.shadowColor = self.buttonShadowColor;
                 }
 			}
@@ -177,7 +177,7 @@
                 }
 				else {
 					[button setBackgroundImage:[self.normalImageRight stretchableImageWithLeftCapWidth:kSTSegmentRightBtnLeftCap topCapHeight:kSTSegmentRightBtnTopCap] forState:UIControlStateNormal];
-                    button.titleLabel.textColor = self.buttonTextColor;
+//                    button.titleLabel.textColor = self.buttonTextColor;
                     button.titleLabel.shadowColor = self.buttonShadowColor;
                 }
 			}
@@ -190,7 +190,7 @@
                 }
                 else {
 					[button setBackgroundImage:[self.normalImageMiddle stretchableImageWithLeftCapWidth:kSTSegmentMiddleBtnLeftCap topCapHeight:kSTSegmentMiddleBtnTopCap] forState:UIControlStateNormal];
-                    button.titleLabel.textColor = self.buttonTextColor;
+//                    button.titleLabel.textColor = self.buttonTextColor;
                     button.titleLabel.shadowColor = self.buttonShadowColor;
                 }
 			}
@@ -245,7 +245,7 @@
 			[button setBackgroundImage:[self.normalImageMiddle stretchableImageWithLeftCapWidth:kSTSegmentMiddleBtnLeftCap topCapHeight:kSTSegmentMiddleBtnTopCap] forState:UIControlStateNormal];
 		}
         
-        button.titleLabel.textColor = self.buttonTextColor;
+//        button.titleLabel.textColor = self.buttonTextColor;
         button.titleLabel.shadowColor = self.buttonShadowColor;
 	}
 }
@@ -261,6 +261,7 @@
 }
 
 - (void)segmentTapped:(id)sender {
+    NSLog(@"segmentTapped--》");
 	[self deselectAllSegments];
 	
 	/*
@@ -297,6 +298,28 @@
 	
 	if(self.momentary)
 		[self performSelector:@selector(deselectAllSegments) withObject:nil afterDelay:0.2];
+}
+
+#pragma mark -
+// 设置字体颜色：color颜色， index：是第几个选择器（0开始）
+- (void) setTitleColor:(UIColor *) color forSegmentAtIndex:(NSInteger)index
+{
+    if (index >= 0 && index < self.segments.count) {
+        // 设置字体颜色：
+        //        [self.buttons[index] setTitleColor:color forState:UIControlStateNormal ];
+        
+        for(UIButton *button in self.subviews)
+        {
+            if(button.tag == index + 1)
+            {
+                button.titleLabel.textColor = color;
+                [button setTitleColor:color forState:UIControlStateNormal ];                
+                NSLog(@"setTitlecolor-->button.tag=%ld", button.tag);
+            }
+            
+        }
+       
+    }
 }
 
 #pragma mark -

@@ -27,7 +27,9 @@ enum {
 @property (nonatomic, strong) UIImage *selectedImageRight;
 
 @property (nonatomic, strong) UIFont *buttonFont;
-@property (nonatomic, strong) UIColor *buttonTextColor;
+//@property (nonatomic, strong) UIColor *buttonTextColor;
+// 存储按钮的文字平时的颜色
+//@property (nonatomic, strong) NSMutableArray *buttonTextColorArr;
 @property (nonatomic, strong) UIColor *selectedButtonTextColor;
 @property (nonatomic, strong) UIColor *buttonShadowColor;
 @property (nonatomic, strong) UIColor *selectedButtonShadowColor;
@@ -35,6 +37,9 @@ enum {
 
 @property (nonatomic, readonly) NSUInteger numberOfSegments;
 @property (nonatomic, getter=isMomentary) BOOL momentary; // if set, then we don't keep showing selected state after tracking ends. default is NO
+
+// 不同颜色的分段选择器
+@property (nonatomic, strong) NSMutableArray *segmentsColor;
 
 // returns last segment pressed. default is STSegmentedControlNoSegment until a segment is pressed. Becomes STSegmentedControlNoSegment again when altering the amount of segments
 // the UIControlEventValueChanged action is invoked when the segment changes via a user event. Set to UISegmentedControlNoSegment to turn off selection
@@ -52,5 +57,8 @@ enum {
 
 - (void)setImage:(NSString *)image forSegmentAtIndex:(NSUInteger)index;
 - (UIImage *)imageForSegmentAtIndex:(NSUInteger)index;
+
+// 设置字体颜色：color颜色， index：是第几个选择器（0开始）
+- (void) setTitleColor:(UIColor *) color forSegmentAtIndex:(NSInteger)index;
 
 @end

@@ -1,13 +1,12 @@
 #STSegmentedControl
 
 ###About
+Fork 自：https://github.com/SkyTrix/STSegmentedControl
+因为自己有个需求就是：分段选择器里面的每个选择器文字的颜色不相同，在github上找了好几个，都没有这个功能，修改：https://github.com/SkyTrix/STSegmentedControl是最方便的，它继承自UIControl。
 
-This is a custom class I wrote to enable use of own images in UISegmentedControl. I started with a UIControl subclass and tried to make it behave as much as possible like UISegmentedControl. This implementation also allows use of icons in the segments.
 
-###Usage
 
-Using STSegmentedControl is straightforward. If you change your instances of UISegmentedControl to STSegmentedControl, most things will likely work.
+###License
+The MIT License
 
-My implementation does however have certain requirements for the images. The images are partially being overlaid, so you may have to fiddle with your shadows/transparency a little. You can check out the demo images to see how it's done.
 
-Hit me up on [Twitter](http://twitter.com/SkyTrix) or send me an [email](mailto:cedric@freshcreations.be).
